@@ -1,10 +1,14 @@
 """Módulo para interactuar con APIs"""
 
-import json, urllib, urllib.parse, urllib.request
-from typing import Callable
+import json
+import urllib
+import urllib.parse
+import urllib.request
+from typing import Any, Callable, Dict
 
 from .config import BASE_URL
 from .exceptions import APIKeyError
+
 
 def validate_api_key(api_key):
     """Valida que la API key tenga formato correcto."""
@@ -39,7 +43,6 @@ def fetch_news(api_name: str, *args, **kwargs) -> dict:
     if api_name not in ("news_api", "guardian"):
         raise ValueError(f"Error. API '{api_name}' no soportada.")
 
-        
     base_config = {
         "timeout": 30,
         "retries": 3,
