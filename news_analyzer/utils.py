@@ -20,3 +20,12 @@ def get_unique_sources(articles):
         for article in articles
         if article.get("source") and article.get("source").get("name")
     }
+
+
+def get_articles_by_source(articles: list[dict], source: str) -> list[dict]:
+    return list(
+        filter(
+            lambda article: article["source"]["name"].lower() == source.lower(),
+            articles,
+        )
+    )
